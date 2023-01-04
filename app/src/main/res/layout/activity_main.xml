@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.MainActivity">
+
+    <data>
+
+        <variable
+            name="mainActivity"
+            type="com.example.weatherforecastapp.ui.MainActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/stateLoadingRun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="errorContent,successContent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/stateSuccessRun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="errorContent,imgLoader" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/stateErrorRun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="imgLoader,successContent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/showLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="imgLoader" />
+
+        <include
+            android:id="@+id/successContent"
+            layout="@layout/activity_success"
+            android:visibility="gone"
+            bind:mainActivity="@{mainActivity}" />
+
+        <include
+            android:id="@+id/errorContent"
+            layout="@layout/activity_error"
+            android:visibility="gone"
+            bind:mainActivity="@{mainActivity}" />
+
+        <ImageView
+            android:id="@+id/imgLoader"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/ic__autorenew"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
